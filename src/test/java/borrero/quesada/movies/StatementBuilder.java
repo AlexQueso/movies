@@ -12,8 +12,8 @@ public class StatementBuilder {
     private int frequentRenterPoints = 0;
 
     public StatementBuilder() {
-        movieNames = new ArrayList<String>();
-        amounts = new ArrayList<Double>();
+        movieNames = new ArrayList<>();
+        amounts = new ArrayList<>();
     }
 
     public StatementBuilder customerName(String customerName) {

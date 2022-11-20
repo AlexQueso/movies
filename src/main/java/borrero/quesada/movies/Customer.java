@@ -10,7 +10,7 @@ public class Customer {
 
     public Customer(String name) {
         this.name = name;
-        rentals = new ArrayList();
+        rentals = new ArrayList<>();
     }
 
     public void addRental(Rental rental) {
