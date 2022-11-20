@@ -7,19 +7,23 @@ public class Movie {
     public static final int CHILDREN = 2;
 
     private String title;
-    private int priceCode;
+    private Price price;
 
     public Movie(String title, int priceCode) {
         this.title = title;
-        this.priceCode = priceCode;
+        setPriceCode(priceCode);
     }
 
     public int getPriceCode() {
-        return priceCode;
+        return price.getPrice();
     }
 
     public void setPriceCode(int priceCode) {
-        this.priceCode = priceCode;
+        switch (priceCode) {
+            case REGULAR -> this.price = new RegularPrice();
+            case NEW_RELEASE -> this.price = new NewReleasePrice();
+            case CHILDREN -> this.price = new ChildrenPrice();
+        }
     }
 
     public String getTitle() {
@@ -28,7 +32,7 @@ public class Movie {
 
     public double getCharge(int daysRented){
         double result = 0;
-        switch (priceCode) {
+        switch (this.getPriceCode()) {
             case REGULAR:
                 result += 2;
                 if (daysRented > 2) {
