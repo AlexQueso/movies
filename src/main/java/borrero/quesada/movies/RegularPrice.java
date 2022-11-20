@@ -1,10 +1,6 @@
 package borrero.quesada.movies;
 
 public class RegularPrice extends Price{
-    @Override
-    int getPriceCode() {
-        return Movie.REGULAR;
-    }
 
     @Override
     double getCharge(int daysRented) {

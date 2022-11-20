@@ -14,18 +14,6 @@ public class Movie {
         this.price = price;
     }
 
-    public int getPriceCode() {
-        return price.getPriceCode();
-    }
-
-    public void setPriceCode(int priceCode) {
-        switch (priceCode) {
-            case REGULAR -> this.price = new RegularPrice();
-            case NEW_RELEASE -> this.price = new NewReleasePrice();
-            case CHILDREN -> this.price = new ChildrenPrice();
-        }
-    }
-
     public String getTitle() {
         return this.title;
     }

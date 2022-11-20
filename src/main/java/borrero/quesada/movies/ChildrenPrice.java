@@ -1,10 +1,6 @@
 package borrero.quesada.movies;
 
 public class ChildrenPrice extends Price{
-    @Override
-    int getPriceCode() {
-        return Movie.CHILDREN;
-    }
 
     @Override
     double getCharge(int daysRented) {
