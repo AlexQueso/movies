@@ -14,13 +14,23 @@ class MovieBuilder {
         return this;
     }
 
-    MovieBuilder priceCode(int priceCode) {
-        this.priceCode = priceCode;
+    Movie build() {
+        return new Movie(title, priceCode);
+    }
+
+    public MovieBuilder regular(){
+        this.priceCode = Movie.REGULAR;
         return this;
     }
 
-    Movie build() {
-        return new Movie(title, priceCode);
+    public MovieBuilder children(){
+        this.priceCode = Movie.CHILDREN;
+        return this;
+    }
+
+    public MovieBuilder newRelease(){
+        this.priceCode = Movie.NEW_RELEASE;
+        return this;
     }
 
 }
