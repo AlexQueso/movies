@@ -1,7 +1,6 @@
 package borrero.quesada.movies;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 public class Customer {
@@ -23,11 +22,9 @@ public class Customer {
     }
 
     public String statement() {
-        Iterator<Rental> rentals = this.rentals.iterator();
         String result = "Rental Record for " + this.getName() + "\n";
-        while (rentals.hasNext()) {
-            Rental each = rentals.next();
-            result += "\t" + each.getMovie().getTitle() + "\t" + each.getCharge() + "\n";
+        for (Rental rental: this.rentals){
+            result += "\t" + rental.getMovie().getTitle() + "\t" + rental.getCharge() + "\n";
         }
         result += "Amount owed is " + this.getTotalAmount() + "\n";
         result += "You earned " + this.getTotalFrequentRenterPoints() + " frequent renter points";
@@ -36,9 +33,7 @@ public class Customer {
 
     private double getTotalAmount (){
         double totalAmount = 0;
-        Iterator<Rental> rentals = this.rentals.iterator();
-        while (rentals.hasNext()) {
-            Rental each = rentals.next();
+        for (Rental each : this.rentals) {
             totalAmount += each.getCharge();
         }
         return totalAmount;
@@ -46,9 +41,7 @@ public class Customer {
 
     private int getTotalFrequentRenterPoints(){
         int totalFrequentRenterPoints = 0;
-        Iterator<Rental> rentals = this.rentals.iterator();
-        while (rentals.hasNext()) {
-            Rental each = rentals.next();
+        for (Rental each : this.rentals) {
             totalFrequentRenterPoints += each.getFrequentRenterPoints();
         }
         return totalFrequentRenterPoints;
