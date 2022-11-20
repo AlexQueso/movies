@@ -27,7 +27,7 @@ public class Movie {
     }
 
     public String getTitle() {
-        return title;
+        return this.title;
     }
 
     public double getCharge(int daysRented){
@@ -35,9 +35,6 @@ public class Movie {
     }
 
     public int getFrequentRenterPoints(int daysRented) {
-        if ((getPriceCode() == NEW_RELEASE) && daysRented > 1) {
-            return 2;
-        }
-        return 1;
+        return this.price.getFrequentRenterPoints(daysRented);
     }
 }
