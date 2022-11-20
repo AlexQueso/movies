@@ -2,5 +2,7 @@ package borrero.quesada.movies;
 
 public abstract class Price {
 
-    abstract int getPrice();
+    abstract int getPriceCode();
+
+    abstract double getCharge(int daysRented);
 }
