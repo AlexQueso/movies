@@ -3,7 +3,7 @@ package borrero.quesada.movies;
 class MovieBuilder {
 
     private String title;
-    private int priceCode;
+    private Price price;
 
     MovieBuilder() {
         title = "movieName";
@@ -15,21 +15,21 @@ class MovieBuilder {
     }
 
     Movie build() {
-        return new Movie(title, priceCode);
+        return new Movie(title, price);
     }
 
     public MovieBuilder regular(){
-        this.priceCode = Movie.REGULAR;
+        this.price = new RegularPrice();
         return this;
     }
 
     public MovieBuilder children(){
-        this.priceCode = Movie.CHILDREN;
+        this.price = new ChildrenPrice();
         return this;
     }
 
     public MovieBuilder newRelease(){
-        this.priceCode = Movie.NEW_RELEASE;
+        this.price = new NewReleasePrice();
         return this;
     }
 
