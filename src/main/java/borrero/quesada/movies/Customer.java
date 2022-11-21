@@ -22,13 +22,12 @@ public class Customer {
     }
 
     public String rentalRecord() {
-        String rentalRecord = this.rentalRecordTitle();
-        for (Rental rental: this.rentals){
-            rentalRecord += "\t" + rental.getMovie().getTitle() + "\t" + rental.getCharge() + "\n";
-        }
-        rentalRecord += this.rentalRecordTotalAmount();
-        rentalRecord += this.rentalRecordTotalFrequentRenterPoints();
-        return rentalRecord;
+        return new RentalRecordBuilder()
+                .title(this.name)
+                .rentedMovies(rentals)
+                .amount(this.getTotalAmount())
+                .frequentRenterPoints(this.getTotalFrequentRenterPoints())
+                .build();
     }
 
     private double getTotalAmount (){
@@ -45,18 +44,6 @@ public class Customer {
             totalFrequentRenterPoints += each.getFrequentRenterPoints();
         }
         return totalFrequentRenterPoints;
-    }
-
-    private String rentalRecordTitle(){
-        return "Rental Record for " + this.getName() + "\n";
-    }
-
-    private String rentalRecordTotalAmount(){
-        return "Amount owed is " + this.getTotalAmount() + "\n";
-    }
-
-    private String rentalRecordTotalFrequentRenterPoints(){
-        return "You earned " + this.getTotalFrequentRenterPoints() + " frequent renter points";
     }
 
 }
