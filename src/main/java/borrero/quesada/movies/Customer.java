@@ -21,14 +21,14 @@ public class Customer {
         return name;
     }
 
-    public String statement() {
-        String result = "Rental Record for " + this.getName() + "\n";
+    public String rentalRecord() {
+        String rentalRecord = this.rentalRecordTitle();
         for (Rental rental: this.rentals){
-            result += "\t" + rental.getMovie().getTitle() + "\t" + rental.getCharge() + "\n";
+            rentalRecord += "\t" + rental.getMovie().getTitle() + "\t" + rental.getCharge() + "\n";
         }
-        result += "Amount owed is " + this.getTotalAmount() + "\n";
-        result += "You earned " + this.getTotalFrequentRenterPoints() + " frequent renter points";
-        return result;
+        rentalRecord += this.rentalRecordTotalAmount();
+        rentalRecord += this.rentalRecordTotalFrequentRenterPoints();
+        return rentalRecord;
     }
 
     private double getTotalAmount (){
@@ -45,6 +45,18 @@ public class Customer {
             totalFrequentRenterPoints += each.getFrequentRenterPoints();
         }
         return totalFrequentRenterPoints;
+    }
+
+    private String rentalRecordTitle(){
+        return "Rental Record for " + this.getName() + "\n";
+    }
+
+    private String rentalRecordTotalAmount(){
+        return "Amount owed is " + this.getTotalAmount() + "\n";
+    }
+
+    private String rentalRecordTotalFrequentRenterPoints(){
+        return "You earned " + this.getTotalFrequentRenterPoints() + " frequent renter points";
     }
 
 }
